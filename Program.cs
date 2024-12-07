@@ -37,6 +37,7 @@ app.Use(async (context, next) =>
 {
     context.Response.OnStarting(() =>
     {
+        Console.WriteLine($"Hit! {context.Response.StatusCode}");
         if (context.Response.StatusCode >= 300 && context.Response.StatusCode < 400)
         {
             if (context.Response.Headers.TryGetValue("Location", out StringValues location))
