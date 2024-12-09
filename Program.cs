@@ -30,7 +30,6 @@ builder.Services.AddReverseProxy()
 
 var app = builder.Build();
 app.MapReverseProxy();
-app.Run();
 
 // Middleware to handle redirection and maintain the path info
 app.Use(async (context, next) =>
@@ -58,6 +57,9 @@ app.Use(async (context, next) =>
 
     await next.Invoke();
 });
+
+
+app.Run();
 
 RouteConfig[] GetRoutes()
 {
